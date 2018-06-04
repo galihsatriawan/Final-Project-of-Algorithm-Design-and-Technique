@@ -10,14 +10,38 @@ package algorithm.strategy;
  * @author root
  */
 public class GraphEdge {
-    GraphNode src;
-    GraphNode dst;
-    GraphNode distance;
+    private GraphNode src;
+    private GraphNode dst;
+    private double distance;
 
-    public GraphEdge(GraphNode new_src, GraphNode new_dst, GraphNode new_distance) {
+    public GraphEdge(GraphNode new_src, GraphNode new_dst, double new_distance) {
         this.src = new_src;
         this.dst = new_dst;
         this.distance = new_distance;
+    }
+
+    public GraphNode getSrc() {
+        return src;
+    }
+
+    public void setSrc(GraphNode src) {
+        this.src = src;
+    }
+
+    public GraphNode getDst() {
+        return dst;
+    }
+
+    public void setDst(GraphNode dst) {
+        this.dst = dst;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
     
     
