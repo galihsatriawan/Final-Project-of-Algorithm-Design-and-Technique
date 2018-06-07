@@ -28,6 +28,15 @@ public class AlgorithmStrategy {
     //Kumpulan Node
     public ArrayList<GraphNode> kump_node = new ArrayList<>();
     
+    // insert node
+    void insertKump_Node(GraphNode new_node){
+        this.kump_node.add(new_node);
+    }
+    
+    void insertDict_Node(String new_key, GraphNode new_node){
+        this.dict_node.put(new_key, new_node);
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
     }
