@@ -67,6 +67,8 @@ public class AlgorithmStrategy {
         GraphNode d = new GraphNode(3, "Kepanjen");
         insertKump_Node(d);
         
+        
+        
         //sample insert edge
         insertEdgeDuaArah("Batu", "Kepanjen", 1);
         
