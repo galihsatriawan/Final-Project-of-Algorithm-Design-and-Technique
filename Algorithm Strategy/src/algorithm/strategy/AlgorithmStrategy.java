@@ -38,6 +38,20 @@ public class AlgorithmStrategy {
         dict_node.put(new_key, new_node);
     }
     
+    static void insertEdgeDuaArah(String node1,String node2,double length){
+        // Cari node nya terlebih dahulu
+        GraphNode node_1 = dict_node.get(node1);
+        GraphNode node_2 = dict_node.get(node2);
+        
+        //Buat edge nya
+        GraphEdge edge_baru1 = new GraphEdge(node_1, node_2, length);
+        GraphEdge edge_baru2 = new GraphEdge(node_2, node_1, length);
+        
+        // Tambahkan ke daftar tetangga
+        node_1.getKump_tetangga().add(edge_baru1);
+        node_2.getKump_tetangga().add(edge_baru2);
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         //Sample Insert Node 
@@ -53,6 +67,13 @@ public class AlgorithmStrategy {
         GraphNode d = new GraphNode(3, "Kepanjen");
         insertKump_Node(d);
         
+        //sample insert edge
+        insertEdgeDuaArah("Batu", "Kepanjen", 1);
+        
+        //tes cetak anak
+        for(GraphEdge edge : b.getKump_tetangga()){
+            System.out.println(edge.getSrc().getNama()+"-->"+edge.getDst().getNama());
+        }
         
     }
     
