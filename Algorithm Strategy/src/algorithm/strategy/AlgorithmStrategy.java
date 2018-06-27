@@ -82,6 +82,9 @@ public class AlgorithmStrategy {
         return edge_visited.get(edge);
     }
 
+    // ArrayList yang menyimpan track terbaik
+    static Pair< ArrayList<GraphEdge>,Double > best_route = new Pair(new ArrayList<>(),0);
+    
     public static void main(String[] args) {
         // TODO code application logic here
         //Sample Insert Node 
@@ -101,7 +104,8 @@ public class AlgorithmStrategy {
         
         //sample insert edge
         insertEdgeDuaArah("Batu", "Kepanjen", 1);
-        System.out.println("Test dict"+get_edge("Kepanjen", "Batu").getDistance());
+        
+//        System.out.println("Test dict"+get_edge("Kepanjen", "Batu").getDistance());
         //tes cetak anak
         for(GraphEdge edge : b.getKump_tetangga()){
             System.out.println(edge.getSrc().getNama()+"-->"+edge.getDst().getNama());
