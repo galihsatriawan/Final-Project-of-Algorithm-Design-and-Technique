@@ -7,6 +7,7 @@ package algorithm.strategy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.util.Pair;
 
 /**
  *
@@ -24,7 +25,8 @@ public class AlgorithmStrategy {
     */ 
     
     public static HashMap<String,GraphNode> dict_node = new HashMap();
-    
+    static HashMap<GraphEdge,Boolean> edge_visited = new HashMap<>();
+    static ArrayList<GraphEdge> list_edge = new ArrayList<>();
     //Kumpulan Node
     public static ArrayList<GraphNode> kump_node = new ArrayList<>();
     
@@ -50,8 +52,36 @@ public class AlgorithmStrategy {
         // Tambahkan ke daftar tetangga
         node_1.getKump_tetangga().add(edge_baru1);
         node_2.getKump_tetangga().add(edge_baru2);
+        
+        //tambahkan ke dictionary
+        dict_edge.put(new Pair(node1,node2), edge_baru1);
+        dict_edge.put(new Pair(node2,node1), edge_baru2);
+        //Tambahkan ke list , karena dua arah maka yang dipakai 2 nya
+        list_edge.add(edge_baru1);
+        list_edge.add(edge_baru2);
+    }
+    //Mereset seluruh penanda edge
+    static void reset_visited(){
+        for(GraphEdge cur: list_edge){
+            edge_visited.replace(cur, Boolean.FALSE);
+        }
     }
     
+    static HashMap< Pair<String,String>,GraphEdge> dict_edge = new HashMap<>();
+    
+    //Mendapatkan edge
+    static GraphEdge get_edge(String src,String dst){
+        return dict_edge.get(new Pair(src,dst));
+    }
+    //tandai berdasarkan source dan tujuan
+    static void tandai_visited(GraphEdge edge){
+        edge_visited.replace(edge, Boolean.TRUE);
+    }
+    //apakah sudah dikunjungi
+    static boolean visited(GraphEdge edge){
+        return edge_visited.get(edge);
+    }
+
     public static void main(String[] args) {
         // TODO code application logic here
         //Sample Insert Node 
@@ -71,7 +101,7 @@ public class AlgorithmStrategy {
         
         //sample insert edge
         insertEdgeDuaArah("Batu", "Kepanjen", 1);
-        
+        System.out.println("Test dict"+get_edge("Kepanjen", "Batu").getDistance());
         //tes cetak anak
         for(GraphEdge edge : b.getKump_tetangga()){
             System.out.println(edge.getSrc().getNama()+"-->"+edge.getDst().getNama());
