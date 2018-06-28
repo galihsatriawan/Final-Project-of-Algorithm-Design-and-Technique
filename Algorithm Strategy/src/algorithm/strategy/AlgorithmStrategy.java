@@ -7,6 +7,7 @@ package algorithm.strategy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import javafx.util.Pair;
 
 /**
@@ -87,6 +88,61 @@ public class AlgorithmStrategy {
     
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Scanner input = new Scanner(System.in);
+        String ulang="y";
+        while (ulang.equals("y")) {            
+            System.out.println("================Menu==================");
+            System.out.println("1. Cetak Seluruh Node dan Tetangganya");
+            System.out.println("2. Tambah Node");
+            System.out.println("3. Tambah Edge");
+            System.out.println("4. Cari Semua Rute");
+            System.out.println("5. Tampilkan Rute Terbaik");
+            System.out.println("00. Keluar");            
+            System.out.println("======================================");
+            
+            System.out.print("Pilih : ");
+            int pilih = input.nextInt();
+            System.out.println("======================================");
+            
+            switch(pilih){
+                case 1:
+                    System.out.println("Pilih Cetak Node");
+                    System.out.println("Pilih Cetak Node");
+                    System.out.println("Pilih Cetak Node");
+                    break;
+                case 2:
+                    System.out.println("Pilih Tambah Node");
+                    System.out.println("Pilih Tambah Node");
+                    System.out.println("Pilih Tambah Node");
+                    break;
+                case 3:
+                    System.out.println("Pilih Tambah Edge");
+                    System.out.println("Pilih Tambah Edge");
+                    System.out.println("Pilih Tambah Edge");
+                    break;
+                case 4:
+                    System.out.println("Pilih Cari Rute");
+                    System.out.println("Pilih Cari Rute");
+                    System.out.println("Pilih Cari Rute");
+                    break;
+                case 5:
+                    System.out.println("Pilih Tampil Rute Terbaik");
+                    System.out.println("Pilih Tampil Rute Terbaik");
+                    System.out.println("Pilih Tampil Rute Terbaik");
+                    break;
+                case 00:
+                    System.out.println("Terimakasih !!");
+                    System.exit(00);
+                    break;
+                default:
+                    System.out.println("Pilihan yang anda masukkan salah");
+            }
+            System.out.println("=====================================");
+            System.out.print("Apakah anda ingin mengulang (y/t)? ");
+            ulang = input.next();
+        }
+        
         //Sample Insert Node 
         GraphNode a = new GraphNode(0, "Malang");
         insertKump_Node(a);
