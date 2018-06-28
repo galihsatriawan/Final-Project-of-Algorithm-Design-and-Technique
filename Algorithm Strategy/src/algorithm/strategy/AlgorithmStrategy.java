@@ -27,6 +27,7 @@ public class AlgorithmStrategy {
     
     public static HashMap<String,GraphNode> dict_node = new HashMap();
     static HashMap<GraphEdge,Boolean> edge_visited = new HashMap<>();
+    
     static ArrayList<GraphEdge> list_edge = new ArrayList<>();
     //Kumpulan Node
     public static ArrayList<GraphNode> kump_node = new ArrayList<>();
@@ -86,6 +87,14 @@ public class AlgorithmStrategy {
     // ArrayList yang menyimpan track terbaik
     static Pair< ArrayList<GraphEdge>,Double > best_route = new Pair(new ArrayList<>(),0);
     
+    static void getListEdge (ArrayList<GraphEdge> listEdge, ArrayList<GraphNode> listNode ){
+        for(int i=0;i<listEdge.size();i++){
+            GraphNode current = listNode.get(i);
+            for(GraphEdge edge : current.getKump_tetangga())
+                System.out.println("< "+edge.getSrc().getNama()+"-->"+edge.getDst().getNama()+" > jarak : "+edge.getDistance());
+        }
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         
@@ -144,6 +153,7 @@ public class AlgorithmStrategy {
         }
         
         //Sample Insert Node 
+        
         GraphNode a = new GraphNode(0, "Malang");
         insertKump_Node(a);
         
@@ -161,12 +171,10 @@ public class AlgorithmStrategy {
         //sample insert edge
         insertEdgeDuaArah("Batu", "Kepanjen", 1);
         
-//        System.out.println("Test dict"+get_edge("Kepanjen", "Batu").getDistance());
-        //tes cetak anak
-        for(GraphEdge edge : b.getKump_tetangga()){
-            System.out.println(edge.getSrc().getNama()+"-->"+edge.getDst().getNama());
-        }
+        getListEdge(list_edge,kump_node);
         
     }
+    
+    
     
 }
